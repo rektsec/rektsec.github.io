@@ -5,8 +5,8 @@
     <description>Wrecking your defenses</description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 21 Feb 2016 21:13:33 -0500</pubDate>
-    <lastBuildDate>Sun, 21 Feb 2016 21:13:33 -0500</lastBuildDate>
+    <pubDate>Sun, 21 Feb 2016 21:36:11 -0500</pubDate>
+    <lastBuildDate>Sun, 21 Feb 2016 21:36:11 -0500</lastBuildDate>
     <generator>Jekyll v3.1.1</generator>
     
       <item>
@@ -95,6 +95,56 @@ Flag: IW{N0_0ne_can_st0p_y0u}&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
         <pubDate>Mon, 22 Feb 2016 00:00:00 -0500</pubDate>
         <link>/writeups/ctf/internetwatche-2016-ctf-the-hidden-message-misc-50/</link>
         <guid isPermaLink="true">/writeups/ctf/internetwatche-2016-ctf-the-hidden-message-misc-50/</guid>
+        
+        
+        <category>Writeups</category>
+        
+        <category>CTF</category>
+        
+      </item>
+    
+      <item>
+        <title>InternetWatche 2016 CTF - Ruby&#39;s Count (Exp 50)</title>
+        <description>&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Hi, my name is Ruby. I like converting characters into ascii values and then calculating the sum.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;!-- more --&gt;
+
+&lt;h2 id=&quot;solution&quot;&gt;Solution&lt;/h2&gt;
+
+&lt;p&gt;The problem with Ruby is the way it handles &lt;code class=&quot;highlighter-rouge&quot;&gt;^&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;$&lt;/code&gt;. These are treated as
+&lt;code class=&quot;highlighter-rouge&quot;&gt;\n&lt;/code&gt; (new line).&lt;/p&gt;
+
+&lt;p&gt;So to exploit this service, all we need to do is to generate a string following
+these three steps&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;10 arbitrary characters&lt;/li&gt;
+  &lt;li&gt;Add a &lt;code class=&quot;highlighter-rouge&quot;&gt;0x0A&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;\n&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Add some more arbitrary data&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Now, just send this string and ruby will happily accept it.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language--&quot; data-lang=&quot;-&quot;&gt;$ python -c &#39;print &quot;f&quot;*10 + &quot;\x0A&quot; + &quot;fff&quot;&#39; | nc 188.166.133.53 12037
+Let me count the ascii values of 10 characters:
+Sum is: 1336
+IW{RUBY_R3G3X_F41L}&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Flag: IW{RUBY_R3G3X_F41L}&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://homakov.blogspot.no/2012/05/saferweb-injects-in-various-ruby.html&quot;&gt;Egor Homakov - Injects in Various Ruby Websites Through Regexp.&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Mon, 22 Feb 2016 00:00:00 -0500</pubDate>
+        <link>/writeups/ctf/internetwatche-2016-ctf-rubys-count-exp-50/</link>
+        <guid isPermaLink="true">/writeups/ctf/internetwatche-2016-ctf-rubys-count-exp-50/</guid>
         
         
         <category>Writeups</category>
