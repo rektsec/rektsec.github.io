@@ -1,0 +1,408 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>[WUP] Internetwatche 2016 CTF - Quick Run (Misc 60) &#8211; Rekt Sec</title>
+<meta name="description" content="Internetwatche 2016 CTF - Quick Run (Misc 60)">
+<meta name="keywords" content="">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[WUP] Internetwatche 2016 CTF - Quick Run (Misc 60)">
+<meta property="og:description" content="Internetwatche 2016 CTF - Quick Run (Misc 60)">
+<meta property="og:url" content="/writeup/ctf/internetwatche-2016-ctf-quick-run-misc-60/">
+<meta property="og:site_name" content="Rekt Sec">
+
+
+
+
+
+<link rel="canonical" href="/writeup/ctf/internetwatche-2016-ctf-quick-run-misc-60/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Rekt Sec Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="/assets/css/jquery.floating-social-share.min.css">
+<!-- Webfonts -->
+<link href="//fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic" rel="stylesheet" type="text/css">
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- Load Modernizr -->
+<script src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+</head>
+
+<body id="post" >
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+
+
+<div class="entry-header">
+  <div class="header-menu header-menu-top">
+    <ul>
+      <li class="header-item-title header-toggle "><a href="#menu"><h2><i class="fa fa-bars"></i></h2></a></li>
+      <li class="header-item-title">
+        <a href="/">
+          
+            <img class="logo" src="/images/logo.png" alt="Rekt Sec">
+          
+          <h2 class="title"> Rekt Sec</h2>
+        </a>
+      </li>
+      
+        
+        
+
+        
+            
+                <li class="header-item "><a href="/hall-of-recks/"><h3>Hall of Recks</h3></a></li>
+            
+        
+      
+        
+        
+
+        
+          <li class="header-item "><a href="/categories"><h3>Categories</h3></a>
+            <ul class="header-submenu">
+              
+                
+                  <li class="sub-item"><a href="/categories/#CTF">CTF</a></li>
+              
+                
+                  <li class="sub-item"><a href="/categories/#Exploitation">Exploitation</a></li>
+              
+                
+                  <li class="sub-item"><a href="/categories/#Learning By Doing">Learning By Doing</a></li>
+              
+                
+                  <li class="sub-item"><a href="/categories/#Random">Random</a></li>
+              
+                
+                  <li class="sub-item"><a href="/categories/#Writeup">Writeup</a></li>
+              
+                
+                  <li class="sub-item"><a href="/categories/#Writeups">Writeups</a></li>
+              
+            </ul>
+          </li>
+        
+      
+        
+        
+
+        
+            
+                <li class="header-item "><a href="/about/"><h3>About</h3></a></li>
+            
+        
+      
+        
+        
+
+        
+            
+                <li class="header-item "><a href="/"><h3>Home</h3></a></li>
+            
+        
+      
+    </ul>
+  </div>
+  <div class="header-title">
+    <div class="header-title-wrap">
+      <h1>[WUP] Internetwatche 2016 CTF - Quick Run (Misc 60)</h1>
+      
+        <h2><span class="entry-date date published updated"><time datetime="2016-02-22T00:00:00-05:00">February 22, 2016</time></span></h2>
+      
+
+      
+        <p class="entry-reading-time">
+          <i class="fa fa-clock-o"></i>
+          
+          Reading time ~2 minutes
+        </p><!-- /.entry-reading-time -->
+      
+    </div><!-- /.header-title-wrap -->
+  </div><!-- /.header-title -->
+</div><!-- /.entry-header -->
+
+
+<nav id="menu" style="display: none">
+  <ul>
+    
+      
+        <li><a href="/"><h3>Home</h3></a></li>
+      
+    
+      
+        <li><a href="/about/"><h3>About</h3></a></li>
+      
+    
+      
+        <li><a href="/categories"><h3>Categories</h3></a>
+          <ul>
+            
+              
+                <li><a href="/categories/#CTF">CTF</a></li>
+            
+              
+                <li><a href="/categories/#Exploitation">Exploitation</a></li>
+            
+              
+                <li><a href="/categories/#Learning By Doing">Learning By Doing</a></li>
+            
+              
+                <li><a href="/categories/#Random">Random</a></li>
+            
+              
+                <li><a href="/categories/#Writeup">Writeup</a></li>
+            
+              
+                <li><a href="/categories/#Writeups">Writeups</a></li>
+            
+          </ul>
+        </li>
+      
+    
+      
+        <li><a href="/hall-of-recks/"><h3>Hall of Recks</h3></a></li>
+      
+    
+  </ul>
+</nav>
+
+
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    <div class="entry-content">
+      <!--h1 class="post-title entry-title">[WUP] Internetwatche 2016 CTF - Quick Run (Misc 60)</h1-->
+      <h2 id="description">Description</h2>
+
+<blockquote>
+  <p>Someone sent me a file with white and black rectangles. I don’t know how to read it. Can you help me?</p>
+</blockquote>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p>Downloading the attached <code class="highlighter-rouge">misc60.zip</code> and extracting it revealed a <code class="highlighter-rouge">README.txt</code> revealed a bunch of text</p>
+
+<figure class="highlight"><pre><code class="language--" data-lang="-">cat README.txt
+4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI
+4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI
+4paI4paI4paI4paI4paI4paI4paI4paICuKWiOKWiCAgICAgICAgICAgICAg4paI4paIICDiloji
+loggIOKWiOKWiCAg4paI4paIICAgICAgICAgICAgICDilojilogK4paI4paIICDilojilojiloji
+lojilojilojilojilojilojiloggIOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiCAg4paI
+4paIICDilojilojilojilojilojilojilojilojilojiloggIOKWiOKWiArilojiloggIOKWiOKW
+iCAgICAgIOKWiOKWiCAg4paI4paIICDilojilojilojiloggICAg4paI4paIICDilojiloggICAg
+ICDilojiloggIOKWiOKWiArilojiloggIOKWiOKWiCAgICAgIOKWiOKWiCAg4paI4paI4paI4paI
+4paI4paI4paI4paI4paI4paIICDilojiloggIOKWiOKWiCAgICAgIOKWiOKWiCAg4paI4paICuKW
+iOKWiCAg4paI4paIICAgICAg4paI4paIICDilojiloggIOKWiOKWiOKWiOKWiCAg4paI4paI4paI
+4paIICDilojiloggICAgICDilojiloggIOKWiOKWiArilojiloggIOKWiOKWiOKWiOKWiOKWiOKW
+iOKWiOKWiOKWiOKWiCAg4paI4paI4paI4paIICAgIOKWiOKWiCAg4paI4paIICDilojilojiloji
+lojilojilojilojilojilojiloggIOKWiOKWiArilojiloggICAgICAgICAgICAgIOKWiOKWiCAg
+4paI4paIICDilojiloggIOKWiOKWiCAgICAgICAgICAgICAg4paI4paICuKWiOKWiOKWiOKWiOKW
+iOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKW
+iCAgICDilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojiloji
+logK4paI4paI4paI4paIICDilojilojilojiloggIOKWiOKWiCAg4paI4paI4paI4paIICAgIOKW
+iOKWiCAgICDilojilojilojiloggIOKWiOKWiCAg4paI4paIICDilojilogK4paI4paIICAgICAg
+ICAgICAg4paI4paIICAgIOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiCAg4paI4paIICDilojiloji
+lojilojilojilojilojiloggIOKWiOKWiArilojiloggIOKWiOKWiCAg4paI4paI4paI4paI4paI
+4paIICAgICAgICAgICAg4paI4paI4paI4paI4paI4paI4paI4paIICDilojiloggIOKWiOKWiCAg
+4paI4paICuKWiOKWiCAg4paI4paI4paI4paIICDilojiloggIOKWiOKWiCAg4paI4paIICDiloji
+loggIOKWiOKWiCAg4paI4paIICDilojiloggIOKWiOKWiCAg4paI4paI4paI4paICuKWiOKWiOKW
+iOKWiCAg4paI4paIICAgIOKWiOKWiCAg4paI4paIICDilojiloggIOKWiOKWiCAg4paI4paIICDi
+lojiloggIOKWiOKWiCAg4paI4paIICDilojilogK4paI4paI4paI4paI4paI4paI4paI4paI4paI
+4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paIICDilojiloggIOKWiOKWiCAg4paI4paI
+ICDilojiloggIOKWiOKWiCAg4paI4paI4paI4paICuKWiOKWiCAgICAgICAgICAgICAg4paI4paI
+4paI4paI4paI4paIICDilojiloggIOKWiOKWiCAg4paI4paIICDilojiloggIOKWiOKWiCAg4paI
+4paICuKWiOKWiCAg4paI4paI4paI4paI4paI4paI4paI4paI4paI4paIICDilojilojilojilogg
+IOKWiOKWiCAg4paI4paIICDilojiloggIOKWiOKWiCAg4paI4paIICDilojilojilojilogK4paI
+4paIICDilojiloggICAgICDilojiloggIOKWiOKWiCAg4paI4paIICDilojiloggIOKWiOKWiCAg
+4paI4paIICDilojiloggIOKWiOKWiCAg4paI4paICuKWiOKWiCAg4paI4paIICAgICAg4paI4paI
+ICDilojilojilojiloggIOKWiOKWiCAg4paI4paIICDilojiloggIOKWiOKWiCAg4paI4paIICDi
+lojilojilojilogK4paI4paIICDilojiloggICAgICDilojiloggIOKWiOKWiOKWiOKWiOKWiOKW
+iCAg4paI4paIICDilojiloggIOKWiOKWiCAg4paI4paIICDilojiloggIOKWiOKWiArilojilogg
+IOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiCAg4paI4paIICAgIOKWiOKWiCAgICDiloji
+lojilojiloggIOKWiOKWiCAg4paI4paIICDilojilojilojilogK4paI4paIICAgICAgICAgICAg
+ICDilojilojilojilojilojiloggICAg4paI4paI4paI4paI4paI4paI4paI4paIICDilojilogg
+ICAgICDilojilogK4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI
+4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI
+4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paICg==
+.....</code></pre></figure>
+
+<p>This format repeated it self over and over. It’s easy to see that this is base64
+encoded data.</p>
+
+<p>Base64 decoding the file quickly revealed that this was QR codes</p>
+
+<figure class="highlight"><pre><code class="language--" data-lang="-">cat README.txt | base64 -d
+██████████████████████████████████████████████
+██              ██  ██  ██  ██              ██
+██  ██████████  ██████████  ██  ██████████  ██
+██  ██      ██  ██  ████    ██  ██      ██  ██
+██  ██      ██  ██████████  ██  ██      ██  ██
+██  ██      ██  ██  ████  ████  ██      ██  ██
+██  ██████████  ████    ██  ██  ██████████  ██
+██              ██  ██  ██  ██              ██
+████████████████████████    ██████████████████
+████  ████  ██  ████    ██    ████  ██  ██  ██
+██            ██    ████████  ██  ████████  ██
+██  ██  ██████            ████████  ██  ██  ██
+██  ████  ██  ██  ██  ██  ██  ██  ██  ██  ████
+████  ██    ██  ██  ██  ██  ██  ██  ██  ██  ██
+████████████████████  ██  ██  ██  ██  ██  ████
+██              ██████  ██  ██  ██  ██  ██  ██
+██  ██████████  ████  ██  ██  ██  ██  ██  ████
+██  ██      ██  ██  ██  ██  ██  ██  ██  ██  ██
+██  ██      ██  ████  ██  ██  ██  ██  ██  ████
+██  ██      ██  ██████  ██  ██  ██  ██  ██  ██
+██  ██████████  ██    ██    ████  ██  ██  ████
+██              ██████    ████████  ██      ██
+██████████████████████████████████████████████
+.....</code></pre></figure>
+
+<p>I quickly wrote a python tool to split the data into separate files.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#!/usr/bin/env python</span>
+
+<span class="kn">from</span> <span class="nn">base64</span> <span class="kn">import</span> <span class="n">b64decode</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">'README.txt'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">counter</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="s">''</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">():</span>
+        <span class="n">out</span> <span class="o">+=</span> <span class="n">line</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">76</span><span class="p">):</span>
+            <span class="n">filename</span> <span class="o">=</span> <span class="s">'output</span><span class="si">%02</span><span class="s">d.txt'</span><span class="o">%</span><span class="p">(</span><span class="n">counter</span><span class="p">)</span>
+            <span class="n">fh</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s">'wb'</span><span class="p">)</span>
+            <span class="n">fh</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">b64decode</span><span class="p">(</span><span class="n">out</span><span class="p">))</span>
+            <span class="n">fh</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+            <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">out</span> <span class="o">=</span> <span class="s">''</span></code></pre></figure>
+
+<p>I now read the files in chunks of 3 at the time (max fit on my screen), and
+scanning them one by one with my phone.</p>
+
+<figure class="highlight"><pre><code class="language--" data-lang="-">output01.txt    F
+output02.txt    l
+output03.txt    a
+output04.txt    g
+output05.txt    i
+output06.txt    s
+output07.txt    :
+output08.txt    I
+output09.txt    W
+output10.txt    {
+output11.txt    Q
+output12.txt    R
+output13.txt    _
+output14.txt    C
+output15.txt    0
+output16.txt    D
+output17.txt    E
+output18.txt    S
+output19.txt    _
+output20.txt    R
+output21.txt    U
+output22.txt    L
+output23.txt    3
+output24.txt    }</code></pre></figure>
+
+<p>Which obviously becomes <code class="highlighter-rouge">Flag is: IW{QR_C0DES_RUL3}</code></p>
+
+<blockquote>
+  <p>Flag: IW{QR_C0DES_RUL3}</p>
+</blockquote>
+
+      <footer class="entry-meta">
+        <span class="entry-tags"></span>
+        
+        <span class="author vcard"><span class="fn">Rekt Sec</span></span>
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    <div class="read-more">
+  
+    <div class="read-more-header">
+      <a href="/writeup/ctf/internetwatche-2016-ctf-its-primer-time-code-60/" class="read-more-btn">Read More</a>
+    </div><!-- /.read-more-header -->
+    <div class="read-more-content">
+      <h3><a href="/writeups/ctf/internetwatche-2016-ctf-the-secret-store-web-70/" title="Internetwatche 2016 CTF - The Secret Store (Web 70)">Internetwatche 2016 CTF - The Secret Store (Web 70)</a></h3>
+      <p>Internetwatche 2016 CTF - The Secret Store (Web 70) <a href="/writeups/ctf/internetwatche-2016-ctf-the-secret-store-web-70/">Continue reading</a></p>
+    </div><!-- /.read-more-content -->
+  
+  <div class="read-more-list">
+    
+      <div class="list-item">
+        <h4><a href="/writeups/ctf/internetwatche-2016-ctf-the-hidden-message-misc-50/" title="Internetwatche 2016 CTF - The hidden message (Misc 50)">Internetwatche 2016 CTF - The hidden message (Misc 50)</a></h4>
+        <span>Published on February 22, 2016</span>
+      </div><!-- /.list-item -->
+    
+      <div class="list-item">
+        <h4><a href="/writeups/ctf/internetwatche-2016-ctf-replace-with-grace-web-60/" title="Internetwatche 2016 CTF - Replace with Grace (Web 60)">Internetwatche 2016 CTF - Replace with Grace (Web 60)</a></h4>
+        <span>Published on February 22, 2016</span>
+      </div><!-- /.list-item -->
+    
+  </div><!-- /.read-more-list -->
+</div><!-- /.read-more -->
+  </article>
+</div><!-- /#main -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="/assets/js/scripts.min.js"></script>
+<script async defer id="github-bjs" src="https://buttons.github.io/buttons.js"></script>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+
+
+
+
+
+
+
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2016 Rekt Sec - Wrecking your defenses.<br>
+Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://github.com/aron-bordin/neo-hpstr-jekyll-theme" rel="nofollow">Neo-HPSTR Theme</a>.</span>
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+</body>
+</html>

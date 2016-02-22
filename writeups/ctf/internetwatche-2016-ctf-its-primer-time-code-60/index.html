@@ -5,8 +5,8 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<title>Welcome To My Corner &#8211; Rekt Sec</title>
-<meta name="description" content="Welcome">
+<title>InternetWatche 2016 CTF - It's Primer Time! (Code 60) &#8211; Rekt Sec</title>
+<meta name="description" content="InternetWatche 2016 CTF - It's Primer Time! (Code 60)">
 <meta name="keywords" content="">
 
 
@@ -14,16 +14,16 @@
 <!-- Open Graph -->
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Welcome To My Corner">
-<meta property="og:description" content="Welcome">
-<meta property="og:url" content="/random/welcome/">
+<meta property="og:title" content="InternetWatche 2016 CTF - It's Primer Time! (Code 60)">
+<meta property="og:description" content="InternetWatche 2016 CTF - It's Primer Time! (Code 60)">
+<meta property="og:url" content="/writeups/ctf/internetwatche-2016-ctf-its-primer-time-code-60/">
 <meta property="og:site_name" content="Rekt Sec">
 
 
 
 
 
-<link rel="canonical" href="/random/welcome/">
+<link rel="canonical" href="/writeups/ctf/internetwatche-2016-ctf-its-primer-time-code-60/">
 <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Rekt Sec Feed">
 
 <!-- http://t.co/dKP3o1e -->
@@ -125,9 +125,9 @@
   </div>
   <div class="header-title">
     <div class="header-title-wrap">
-      <h1>Welcome To My Corner</h1>
+      <h1>InternetWatche 2016 CTF - It's Primer Time! (Code 60)</h1>
       
-        <h2><span class="entry-date date published updated"><time datetime="2016-02-06T00:00:00-05:00">February 06, 2016</time></span></h2>
+        <h2><span class="entry-date date published updated"><time datetime="2016-02-22T00:00:00-05:00">February 22, 2016</time></span></h2>
       
 
       
@@ -182,22 +182,60 @@
 <div id="main" role="main">
   <article class="hentry">
     <div class="entry-content">
-      <!--h1 class="post-title entry-title">Welcome To My Corner</h1-->
-      <p>Hello</p>
+      <!--h1 class="post-title entry-title">InternetWatche 2016 CTF - It's Primer Time! (Code 60)</h1-->
+      <h2 id="description">Description</h2>
 
-<p>Some might wonder who I am, does it really matter? I could be your neighbor,
-your kids’ friend, or your friends’ friend or boyfriend or girlfriend, or I
-could be your son or daughter.</p>
+<blockquote>
+  <p>We all know that prime numbers are quite important in cryptography. Can you help me to find some?</p>
+</blockquote>
 
-<p>That being said, the reason why I’m here is to share my knowledge in the field
-of breaking security defenses.</p>
+<!-- more -->
 
-<p>It will contain write ups from ctf’s, wargames, etc, and disclosures when I have
-some.</p>
+<h2 id="solution">Solution</h2>
 
-<p>I guess that’s it for the introduction.</p>
+<p>Connecting to the running service, I was greated with a message asking for the
+next prime number after [number]</p>
 
-<p>- rektsec</p>
+<p>So with some quick python hackery I ended up with this code.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#!/usr/bin/env python</span>
+
+<span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="k">def</span> <span class="nf">get_next_prime</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+    <span class="s">"""Get next prime after number"""</span>
+    <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">number</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">number</span><span class="o">*</span><span class="mi">2</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">num</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">num</span><span class="p">):</span>
+                <span class="c">#print '&gt; num %% y = %d %% %d ='%(num,y),(num % y)</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">num</span> <span class="o">%</span> <span class="n">y</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="k">break</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">num</span>
+
+<span class="n">host</span> <span class="o">=</span> <span class="s">'188.166.133.53'</span>
+<span class="n">port</span> <span class="o">=</span> <span class="mi">11059</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">remote</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">)</span>
+<span class="n">r</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="n">orig_data</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">orig_data</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">' '</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">orig_data</span><span class="p">)</span>
+    <span class="n">number</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s">':'</span><span class="p">))</span>
+    <span class="n">next_prime</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">get_next_prime</span><span class="p">(</span><span class="n">number</span><span class="p">))</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">'Next prime after </span><span class="si">%</span><span class="s">d is </span><span class="si">%</span><span class="s">s'</span><span class="o">%</span><span class="p">(</span><span class="n">number</span><span class="p">,</span> <span class="n">next_prime</span><span class="p">))</span>
+    <span class="n">r</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">next_prime</span><span class="p">)</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">))</span>
+
+<span class="n">r</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></code></pre></figure>
+
+<p>It ran for a little bit before crashing, which I expected, and returning the
+flag.</p>
+
+<blockquote>
+  <p>Flag: IW{Pr1m3s_4r3_!mp0rt4nt}</p>
+</blockquote>
 
       <footer class="entry-meta">
         <span class="entry-tags"></span>
@@ -209,7 +247,7 @@ some.</p>
     <div class="read-more">
   
     <div class="read-more-header">
-      <a href="" class="read-more-btn">Read More</a>
+      <a href="/writeups/ctf/internetwatche-2016-ctf-a-numbers-game-code-50/" class="read-more-btn">Read More</a>
     </div><!-- /.read-more-header -->
     <div class="read-more-content">
       <h3><a href="/writeups/ctf/internetwatche-2016-ctf-the-secret-store-web-70/" title="InternetWatche 2016 CTF - The Secret Store (Web 70)">InternetWatche 2016 CTF - The Secret Store (Web 70)</a></h3>

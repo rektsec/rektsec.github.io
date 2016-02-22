@@ -5,25 +5,25 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<title>Blog Categories &#8211; Rekt Sec</title>
-<meta name="description" content="An archive of posts sorted by category.">
-
+<title>[WUP] Internetwatche 2016 CTF - The hidden message (Misc 50) &#8211; Rekt Sec</title>
+<meta name="description" content="Internetwatche 2016 CTF - The hidden message (Misc 50)">
+<meta name="keywords" content="">
 
 
 
 <!-- Open Graph -->
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Blog Categories">
-<meta property="og:description" content="An archive of posts sorted by category.">
-<meta property="og:url" content="/categories/">
+<meta property="og:title" content="[WUP] Internetwatche 2016 CTF - The hidden message (Misc 50)">
+<meta property="og:description" content="Internetwatche 2016 CTF - The hidden message (Misc 50)">
+<meta property="og:url" content="/writeup/ctf/internetwatche-2016-ctf-misc-50/">
 <meta property="og:site_name" content="Rekt Sec">
 
 
 
 
 
-<link rel="canonical" href="/categories/">
+<link rel="canonical" href="/writeup/ctf/internetwatche-2016-ctf-misc-50/">
 <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Rekt Sec Feed">
 
 <!-- http://t.co/dKP3o1e -->
@@ -61,7 +61,7 @@
 
 </head>
 
-<body id="post-index">
+<body id="post" >
 
 <!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
 
@@ -84,11 +84,23 @@
         
 
         
-          <li class="header-item active"><a href="/categories"><h3>Categories</h3></a>
+            
+                <li class="header-item "><a href="/hall-of-recks/"><h3>Hall of Recks</h3></a></li>
+            
+        
+      
+        
+        
+
+        
+          <li class="header-item "><a href="/categories"><h3>Categories</h3></a>
             <ul class="header-submenu">
               
                 
                   <li class="sub-item"><a href="/categories/#CTF">CTF</a></li>
+              
+                
+                  <li class="sub-item"><a href="/categories/#Exploitation">Exploitation</a></li>
               
                 
                   <li class="sub-item"><a href="/categories/#Learning By Doing">Learning By Doing</a></li>
@@ -97,7 +109,7 @@
                   <li class="sub-item"><a href="/categories/#Random">Random</a></li>
               
                 
-                  <li class="sub-item"><a href="/categories/#Writeups">Writeups</a></li>
+                  <li class="sub-item"><a href="/categories/#Writeup">Writeup</a></li>
               
             </ul>
           </li>
@@ -125,9 +137,17 @@
   </div>
   <div class="header-title">
     <div class="header-title-wrap">
-      <h1>Blog Categories</h1>
+      <h1>[WUP] Internetwatche 2016 CTF - The hidden message (Misc 50)</h1>
+      
+        <h2><span class="entry-date date published updated"><time datetime="2016-02-22T00:00:00-05:00">February 22, 2016</time></span></h2>
       
 
+      
+        <p class="entry-reading-time">
+          <i class="fa fa-clock-o"></i>
+          
+          Reading time ~1 minute
+        </p><!-- /.entry-reading-time -->
       
     </div><!-- /.header-title-wrap -->
   </div><!-- /.header-title -->
@@ -153,16 +173,23 @@
                 <li><a href="/categories/#CTF">CTF</a></li>
             
               
+                <li><a href="/categories/#Exploitation">Exploitation</a></li>
+            
+              
                 <li><a href="/categories/#Learning By Doing">Learning By Doing</a></li>
             
               
                 <li><a href="/categories/#Random">Random</a></li>
             
               
-                <li><a href="/categories/#Writeups">Writeups</a></li>
+                <li><a href="/categories/#Writeup">Writeup</a></li>
             
           </ul>
         </li>
+      
+    
+      
+        <li><a href="/hall-of-recks/"><h3>Hall of Recks</h3></a></li>
       
     
   </ul>
@@ -172,84 +199,71 @@
 
 
 <div id="main" role="main">
-  
-<ul class="entry-meta inline-list">
-  
-    
-    <li><a href="#CTF" class="tag"><span class="term">CTF</span> <span class="count">6</span></a></li>
-  
-    
-    <li><a href="#Learning By Doing" class="tag"><span class="term">Learning By Doing</span> <span class="count">1</span></a></li>
-  
-    
-    <li><a href="#Random" class="tag"><span class="term">Random</span> <span class="count">1</span></a></li>
-  
-    
-    <li><a href="#Writeups" class="tag"><span class="term">Writeups</span> <span class="count">6</span></a></li>
-  
-</ul>
+  <article class="hentry">
+    <div class="entry-content">
+      <!--h1 class="post-title entry-title">[WUP] Internetwatche 2016 CTF - The hidden message (Misc 50)</h1-->
+      <h2 id="description">Description</h2>
 
-<article>
-  <h2 id="CTF" class="tag-heading">CTF</h2>
-    <ul>
+<blockquote>
+  <p>My friend really can’t remember passwords. So he uses some kind of obfuscation. Can you restore the plaintext?</p>
+</blockquote>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p>Downloading the attached <code class="highlighter-rouge">misc50.zip</code> and extracting it revealed a <code class="highlighter-rouge">README.txt</code> file.</p>
+
+<figure class="highlight"><pre><code class="language-php" data-lang="php">$ cat README.txt
+0000000 126 062 126 163 142 103 102 153 142 062 065 154 111 121 157 113
+0000020 122 155 170 150 132 172 157 147 123 126 144 067 124 152 102 146
+0000040 115 107 065 154 130 062 116 150 142 154 071 172 144 104 102 167
+0000060 130 063 153 167 144 130 060 113 012
+0000071</code></pre></figure>
+
+<p>These are octal values. Decoding these numbers returns a base64 encoded string.</p>
+
+<figure class="highlight"><pre><code class="language-php" data-lang="php">V2VsbCBkb25lIQoKRmxhZzogSVd7TjBfMG5lX2Nhbl9zdDBwX3kwdX0K</code></pre></figure>
+
+<p>Last step is to decode this</p>
+
+<figure class="highlight"><pre><code class="language-php" data-lang="php">$ echo V2VsbCBkb25lIQoKRmxhZzogSVd7TjBfMG5lX2Nhbl9zdDBwX3kwdX0K | base64 -d
+Well done!
+
+Flag: IW{N0_0ne_can_st0p_y0u}</code></pre></figure>
+
+<blockquote>
+  <p>Flag: IW{N0_0ne_can_st0p_y0u}</p>
+</blockquote>
+
+      <footer class="entry-meta">
+        <span class="entry-tags"></span>
+        <span>Updated on <span class="entry-date date updated"><time datetime="2016-02-22">February 22, 2016</time></span></span>
+        
+        <span class="author vcard"><span class="fn">Rekt Sec</span></span>
+      </footer>
+    </div><!-- /.entry-content -->
     
-      <li class="entry-title"><a href="/writeups/ctf/internetwatche-2016-ctf-the-secret-store-web-70/" title="InternetWatche 2016 CTF - The Secret Store (Web 70)">InternetWatche 2016 CTF - The Secret Store (Web 70)</a></li>
+    <div class="read-more">
+  
+    <div class="read-more-header">
+      <a href="/learning%20by%20doing/exploitation/lbd-web-application-exploitation/" class="read-more-btn">Read More</a>
+    </div><!-- /.read-more-header -->
+    <div class="read-more-content">
+      <h3><a href="/learning%20by%20doing/exploitation/lbd-web-application-exploitation/" title="[LBD] Exploitation: Web Applications">[LBD] Exploitation: Web Applications</a></h3>
+      <p>Personal notes on web application exploitation <a href="/learning%20by%20doing/exploitation/lbd-web-application-exploitation/">Continue reading</a></p>
+    </div><!-- /.read-more-content -->
+  
+  <div class="read-more-list">
     
-      <li class="entry-title"><a href="/writeups/ctf/internetwatche-2016-ctf-the-hidden-message-misc-50/" title="InternetWatche 2016 CTF - The hidden message (Misc 50)">InternetWatche 2016 CTF - The hidden message (Misc 50)</a></li>
+      <div class="list-item">
+        <h4><a href="/random/welcome/" title="Welcome To My Corner">Welcome To My Corner</a></h4>
+        <span>Published on February 06, 2016</span>
+      </div><!-- /.list-item -->
     
-      <li class="entry-title"><a href="/writeups/ctf/internetwatche-2016-ctf-replace-with-grace-web-60/" title="InternetWatche 2016 CTF - Replace with Grace (Web 60)">InternetWatche 2016 CTF - Replace with Grace (Web 60)</a></li>
-    
-      <li class="entry-title"><a href="/writeups/ctf/internetwatche-2016-ctf-quick-run-misc-60/" title="InternetWatche 2016 CTF - Quick Run (Misc 60)">InternetWatche 2016 CTF - Quick Run (Misc 60)</a></li>
-    
-      <li class="entry-title"><a href="/writeups/ctf/internetwatche-2016-ctf-its-primer-time-code-60/" title="InternetWatche 2016 CTF - It's Primer Time! (Code 60)">InternetWatche 2016 CTF - It's Primer Time! (Code 60)</a></li>
-    
-      <li class="entry-title"><a href="/writeups/ctf/internetwatche-2016-ctf-a-numbers-game-code-50/" title="InternetWatche 2016 CTF - A Number Game (Code 50)">InternetWatche 2016 CTF - A Number Game (Code 50)</a></li>
-    
-    </ul>
+  </div><!-- /.read-more-list -->
+</div><!-- /.read-more -->
   </article>
-<!-- /.hentry -->
-
-<article>
-  <h2 id="Learning By Doing" class="tag-heading">Learning By Doing</h2>
-    <ul>
-    
-      <li class="entry-title"><a href="/learning%20by%20doing/web-application-exploitation/" title="Learning by Doing: Web Application Exploitation">Learning by Doing: Web Application Exploitation</a></li>
-    
-    </ul>
-  </article>
-<!-- /.hentry -->
-
-<article>
-  <h2 id="Random" class="tag-heading">Random</h2>
-    <ul>
-    
-      <li class="entry-title"><a href="/random/welcome/" title="Welcome To My Corner">Welcome To My Corner</a></li>
-    
-    </ul>
-  </article>
-<!-- /.hentry -->
-
-<article>
-  <h2 id="Writeups" class="tag-heading">Writeups</h2>
-    <ul>
-    
-      <li class="entry-title"><a href="/writeups/ctf/internetwatche-2016-ctf-the-secret-store-web-70/" title="InternetWatche 2016 CTF - The Secret Store (Web 70)">InternetWatche 2016 CTF - The Secret Store (Web 70)</a></li>
-    
-      <li class="entry-title"><a href="/writeups/ctf/internetwatche-2016-ctf-the-hidden-message-misc-50/" title="InternetWatche 2016 CTF - The hidden message (Misc 50)">InternetWatche 2016 CTF - The hidden message (Misc 50)</a></li>
-    
-      <li class="entry-title"><a href="/writeups/ctf/internetwatche-2016-ctf-replace-with-grace-web-60/" title="InternetWatche 2016 CTF - Replace with Grace (Web 60)">InternetWatche 2016 CTF - Replace with Grace (Web 60)</a></li>
-    
-      <li class="entry-title"><a href="/writeups/ctf/internetwatche-2016-ctf-quick-run-misc-60/" title="InternetWatche 2016 CTF - Quick Run (Misc 60)">InternetWatche 2016 CTF - Quick Run (Misc 60)</a></li>
-    
-      <li class="entry-title"><a href="/writeups/ctf/internetwatche-2016-ctf-its-primer-time-code-60/" title="InternetWatche 2016 CTF - It's Primer Time! (Code 60)">InternetWatche 2016 CTF - It's Primer Time! (Code 60)</a></li>
-    
-      <li class="entry-title"><a href="/writeups/ctf/internetwatche-2016-ctf-a-numbers-game-code-50/" title="InternetWatche 2016 CTF - A Number Game (Code 50)">InternetWatche 2016 CTF - A Number Game (Code 50)</a></li>
-    
-    </ul>
-  </article>
-<!-- /.hentry -->
-
-
 </div><!-- /#main -->
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>

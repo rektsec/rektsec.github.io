@@ -1,6 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>/writeups/ctf/internetwatche-2016-ctf-the-secret-store-web-70/</loc>
+<lastmod>2016-02-22T00:00:00-05:00</lastmod>
+</url>
+<url>
+<loc>/writeups/ctf/internetwatche-2016-ctf-the-hidden-message-misc-50/</loc>
+<lastmod>2016-02-22T00:00:00-05:00</lastmod>
+</url>
+<url>
+<loc>/writeups/ctf/internetwatche-2016-ctf-replace-with-grace-web-60/</loc>
+<lastmod>2016-02-22T00:00:00-05:00</lastmod>
+</url>
+<url>
+<loc>/writeups/ctf/internetwatche-2016-ctf-quick-run-misc-60/</loc>
+<lastmod>2016-02-22T00:00:00-05:00</lastmod>
+</url>
+<url>
+<loc>/writeups/ctf/internetwatche-2016-ctf-its-primer-time-code-60/</loc>
+<lastmod>2016-02-22T00:00:00-05:00</lastmod>
+</url>
+<url>
+<loc>/writeups/ctf/internetwatche-2016-ctf-a-numbers-game-code-50/</loc>
+<lastmod>2016-02-22T00:00:00-05:00</lastmod>
+</url>
+<url>
+<loc>/learning%2520by%2520doing/web-application-exploitation/</loc>
+<lastmod>2016-02-18T00:00:00-05:00</lastmod>
+</url>
+<url>
 <loc>/random/welcome/</loc>
 <lastmod>2016-02-06T00:00:00-05:00</lastmod>
 </url>

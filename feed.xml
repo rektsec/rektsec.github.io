@@ -5,9 +5,548 @@
     <description>Wrecking your defenses</description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 06 Feb 2016 19:10:20 -0500</pubDate>
-    <lastBuildDate>Sat, 06 Feb 2016 19:10:20 -0500</lastBuildDate>
+    <pubDate>Sun, 21 Feb 2016 21:13:33 -0500</pubDate>
+    <lastBuildDate>Sun, 21 Feb 2016 21:13:33 -0500</lastBuildDate>
     <generator>Jekyll v3.1.1</generator>
+    
+      <item>
+        <title>InternetWatche 2016 CTF - The Secret Store (Web 70)</title>
+        <description>&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;We all love secrets. Without them, our lives would be dull. A student wrote a secure secret store, however he was babbling about problems with the database. Maybe I shouldn’t use the ‘admin’ account.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;!-- more --&gt;
+
+&lt;h2 id=&quot;solution&quot;&gt;Solution&lt;/h2&gt;
+
+&lt;p&gt;After some fiddling around with different SQL injection attacks to try to bypass
+the log in, I decided to register with the application.&lt;/p&gt;
+
+&lt;p&gt;I first registered with some random data. I then decided to see if it was
+vulnerable to column truncation attack, to log in as ‘admin’&lt;/p&gt;
+
+&lt;p&gt;This is trivial to exploit. First I registered with the following credentials&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language--&quot; data-lang=&quot;-&quot;&gt;Username: admin                                                                                 truncate
+Password: rektsec&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Then I logged in with&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language--&quot; data-lang=&quot;-&quot;&gt;Username: admin
+Password: rektsec&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;And it was a success.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Flag: IW{TRUNCATION_IS_MY_FRIEND}&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;Note:&lt;/strong&gt; I will write a post about why and how this works later&lt;/em&gt;&lt;/p&gt;
+</description>
+        <pubDate>Mon, 22 Feb 2016 00:00:00 -0500</pubDate>
+        <link>/writeups/ctf/internetwatche-2016-ctf-the-secret-store-web-70/</link>
+        <guid isPermaLink="true">/writeups/ctf/internetwatche-2016-ctf-the-secret-store-web-70/</guid>
+        
+        
+        <category>Writeups</category>
+        
+        <category>CTF</category>
+        
+      </item>
+    
+      <item>
+        <title>InternetWatche 2016 CTF - The hidden message (Misc 50)</title>
+        <description>&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;My friend really can’t remember passwords. So he uses some kind of obfuscation. Can you restore the plaintext?&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;!-- more --&gt;
+
+&lt;h2 id=&quot;solution&quot;&gt;Solution&lt;/h2&gt;
+
+&lt;p&gt;Downloading the attached &lt;code class=&quot;highlighter-rouge&quot;&gt;misc50.zip&lt;/code&gt; and extracting it revealed a &lt;code class=&quot;highlighter-rouge&quot;&gt;README.txt&lt;/code&gt; file.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language--&quot; data-lang=&quot;-&quot;&gt;$ cat README.txt
+0000000 126 062 126 163 142 103 102 153 142 062 065 154 111 121 157 113
+0000020 122 155 170 150 132 172 157 147 123 126 144 067 124 152 102 146
+0000040 115 107 065 154 130 062 116 150 142 154 071 172 144 104 102 167
+0000060 130 063 153 167 144 130 060 113 012
+0000071&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;These are octal values. Decoding these numbers returns a base64 encoded string.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language--&quot; data-lang=&quot;-&quot;&gt;V2VsbCBkb25lIQoKRmxhZzogSVd7TjBfMG5lX2Nhbl9zdDBwX3kwdX0K&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Last step is to decode this&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language--&quot; data-lang=&quot;-&quot;&gt;$ echo V2VsbCBkb25lIQoKRmxhZzogSVd7TjBfMG5lX2Nhbl9zdDBwX3kwdX0K | base64 -d
+Well done!
+
+Flag: IW{N0_0ne_can_st0p_y0u}&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Flag: IW{N0_0ne_can_st0p_y0u}&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+        <pubDate>Mon, 22 Feb 2016 00:00:00 -0500</pubDate>
+        <link>/writeups/ctf/internetwatche-2016-ctf-the-hidden-message-misc-50/</link>
+        <guid isPermaLink="true">/writeups/ctf/internetwatche-2016-ctf-the-hidden-message-misc-50/</guid>
+        
+        
+        <category>Writeups</category>
+        
+        <category>CTF</category>
+        
+      </item>
+    
+      <item>
+        <title>InternetWatche 2016 CTF - Replace with Grace (Web 60)</title>
+        <description>&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Regular expressions are pretty useful. Especially when you need to search and replace complex terms.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;!-- more --&gt;
+
+&lt;h2 id=&quot;solution&quot;&gt;Solution&lt;/h2&gt;
+
+&lt;p&gt;The site appeared to be a form to perform regular expression replacement&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/images/ctf/interwatche/2016/web/web60/001.png&quot;&gt;&lt;img src=&quot;/images/ctf/interwatche/2016/web/web60/001.png&quot; alt=&quot;Screenshot 001&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;A simple test verified my initial thoughts&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/images/ctf/interwatche/2016/web/web60/002.png&quot;&gt;&lt;img src=&quot;/images/ctf/interwatche/2016/web/web60/002.png&quot; alt=&quot;Screenshot 002&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;From the placeholder in the pattern field, it also indicated that it’s possible
+to use arbitrary modifiers as well. Having that in mind, it appears this application
+might be vulnerable to exploiting the applipcation through the &lt;code class=&quot;highlighter-rouge&quot;&gt;/e&lt;/code&gt; modifier
+which works as &lt;code class=&quot;highlighter-rouge&quot;&gt;eval()&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;This modifier is deprecated since PHP 5.5.0 - &lt;a href=&quot;http://php.net/preg_replace&quot;&gt;preg_replace()&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/images/ctf/interwatche/2016/web/web60/003.png&quot;&gt;&lt;img src=&quot;/images/ctf/interwatche/2016/web/web60/003.png&quot; alt=&quot;Screenshot 003&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;This proved my theory, and it was trivial to extract the flag.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/images/ctf/interwatche/2016/web/web60/004.png&quot;&gt;&lt;img src=&quot;/images/ctf/interwatche/2016/web/web60/004.png&quot; alt=&quot;Screenshot 004&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$FLAG&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;IW&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;R3Pl4c3_N0t_S4F3&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;?&amp;gt;&lt;/span&gt; ar&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Flag: IW{R3Pl4c3_N0t_S4F3}&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+        <pubDate>Mon, 22 Feb 2016 00:00:00 -0500</pubDate>
+        <link>/writeups/ctf/internetwatche-2016-ctf-replace-with-grace-web-60/</link>
+        <guid isPermaLink="true">/writeups/ctf/internetwatche-2016-ctf-replace-with-grace-web-60/</guid>
+        
+        
+        <category>Writeups</category>
+        
+        <category>CTF</category>
+        
+      </item>
+    
+      <item>
+        <title>InternetWatche 2016 CTF - Quick Run (Misc 60)</title>
+        <description>&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Someone sent me a file with white and black rectangles. I don’t know how to read it. Can you help me?&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;!-- more --&gt;
+
+&lt;h2 id=&quot;solution&quot;&gt;Solution&lt;/h2&gt;
+
+&lt;p&gt;Downloading the attached &lt;code class=&quot;highlighter-rouge&quot;&gt;misc60.zip&lt;/code&gt; and extracting it revealed a &lt;code class=&quot;highlighter-rouge&quot;&gt;README.txt&lt;/code&gt; revealed a bunch of text&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language--&quot; data-lang=&quot;-&quot;&gt;cat README.txt
+4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI
+4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI
+4paI4paI4paI4paI4paI4paI4paI4paICuKWiOKWiCAgICAgICAgICAgICAg4paI4paIICDiloji
+loggIOKWiOKWiCAg4paI4paIICAgICAgICAgICAgICDilojilogK4paI4paIICDilojilojiloji
+lojilojilojilojilojilojiloggIOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiCAg4paI
+4paIICDilojilojilojilojilojilojilojilojilojiloggIOKWiOKWiArilojiloggIOKWiOKW
+iCAgICAgIOKWiOKWiCAg4paI4paIICDilojilojilojiloggICAg4paI4paIICDilojiloggICAg
+ICDilojiloggIOKWiOKWiArilojiloggIOKWiOKWiCAgICAgIOKWiOKWiCAg4paI4paI4paI4paI
+4paI4paI4paI4paI4paI4paIICDilojiloggIOKWiOKWiCAgICAgIOKWiOKWiCAg4paI4paICuKW
+iOKWiCAg4paI4paIICAgICAg4paI4paIICDilojiloggIOKWiOKWiOKWiOKWiCAg4paI4paI4paI
+4paIICDilojiloggICAgICDilojiloggIOKWiOKWiArilojiloggIOKWiOKWiOKWiOKWiOKWiOKW
+iOKWiOKWiOKWiOKWiCAg4paI4paI4paI4paIICAgIOKWiOKWiCAg4paI4paIICDilojilojiloji
+lojilojilojilojilojilojiloggIOKWiOKWiArilojiloggICAgICAgICAgICAgIOKWiOKWiCAg
+4paI4paIICDilojiloggIOKWiOKWiCAgICAgICAgICAgICAg4paI4paICuKWiOKWiOKWiOKWiOKW
+iOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKW
+iCAgICDilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojilojiloji
+logK4paI4paI4paI4paIICDilojilojilojiloggIOKWiOKWiCAg4paI4paI4paI4paIICAgIOKW
+iOKWiCAgICDilojilojilojiloggIOKWiOKWiCAg4paI4paIICDilojilogK4paI4paIICAgICAg
+ICAgICAg4paI4paIICAgIOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiCAg4paI4paIICDilojiloji
+lojilojilojilojilojiloggIOKWiOKWiArilojiloggIOKWiOKWiCAg4paI4paI4paI4paI4paI
+4paIICAgICAgICAgICAg4paI4paI4paI4paI4paI4paI4paI4paIICDilojiloggIOKWiOKWiCAg
+4paI4paICuKWiOKWiCAg4paI4paI4paI4paIICDilojiloggIOKWiOKWiCAg4paI4paIICDiloji
+loggIOKWiOKWiCAg4paI4paIICDilojiloggIOKWiOKWiCAg4paI4paI4paI4paICuKWiOKWiOKW
+iOKWiCAg4paI4paIICAgIOKWiOKWiCAg4paI4paIICDilojiloggIOKWiOKWiCAg4paI4paIICDi
+lojiloggIOKWiOKWiCAg4paI4paIICDilojilogK4paI4paI4paI4paI4paI4paI4paI4paI4paI
+4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paIICDilojiloggIOKWiOKWiCAg4paI4paI
+ICDilojiloggIOKWiOKWiCAg4paI4paI4paI4paICuKWiOKWiCAgICAgICAgICAgICAg4paI4paI
+4paI4paI4paI4paIICDilojiloggIOKWiOKWiCAg4paI4paIICDilojiloggIOKWiOKWiCAg4paI
+4paICuKWiOKWiCAg4paI4paI4paI4paI4paI4paI4paI4paI4paI4paIICDilojilojilojilogg
+IOKWiOKWiCAg4paI4paIICDilojiloggIOKWiOKWiCAg4paI4paIICDilojilojilojilogK4paI
+4paIICDilojiloggICAgICDilojiloggIOKWiOKWiCAg4paI4paIICDilojiloggIOKWiOKWiCAg
+4paI4paIICDilojiloggIOKWiOKWiCAg4paI4paICuKWiOKWiCAg4paI4paIICAgICAg4paI4paI
+ICDilojilojilojiloggIOKWiOKWiCAg4paI4paIICDilojiloggIOKWiOKWiCAg4paI4paIICDi
+lojilojilojilogK4paI4paIICDilojiloggICAgICDilojiloggIOKWiOKWiOKWiOKWiOKWiOKW
+iCAg4paI4paIICDilojiloggIOKWiOKWiCAg4paI4paIICDilojiloggIOKWiOKWiArilojilogg
+IOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiCAg4paI4paIICAgIOKWiOKWiCAgICDiloji
+lojilojiloggIOKWiOKWiCAg4paI4paIICDilojilojilojilogK4paI4paIICAgICAgICAgICAg
+ICDilojilojilojilojilojiloggICAg4paI4paI4paI4paI4paI4paI4paI4paIICDilojilogg
+ICAgICDilojilogK4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI
+4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI
+4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paI4paICg==
+.....&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;This format repeated it self over and over. It’s easy to see that this is base64
+encoded data.&lt;/p&gt;
+
+&lt;p&gt;Base64 decoding the file quickly revealed that this was QR codes&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language--&quot; data-lang=&quot;-&quot;&gt;cat README.txt | base64 -d
+██████████████████████████████████████████████
+██              ██  ██  ██  ██              ██
+██  ██████████  ██████████  ██  ██████████  ██
+██  ██      ██  ██  ████    ██  ██      ██  ██
+██  ██      ██  ██████████  ██  ██      ██  ██
+██  ██      ██  ██  ████  ████  ██      ██  ██
+██  ██████████  ████    ██  ██  ██████████  ██
+██              ██  ██  ██  ██              ██
+████████████████████████    ██████████████████
+████  ████  ██  ████    ██    ████  ██  ██  ██
+██            ██    ████████  ██  ████████  ██
+██  ██  ██████            ████████  ██  ██  ██
+██  ████  ██  ██  ██  ██  ██  ██  ██  ██  ████
+████  ██    ██  ██  ██  ██  ██  ██  ██  ██  ██
+████████████████████  ██  ██  ██  ██  ██  ████
+██              ██████  ██  ██  ██  ██  ██  ██
+██  ██████████  ████  ██  ██  ██  ██  ██  ████
+██  ██      ██  ██  ██  ██  ██  ██  ██  ██  ██
+██  ██      ██  ████  ██  ██  ██  ██  ██  ████
+██  ██      ██  ██████  ██  ██  ██  ██  ██  ██
+██  ██████████  ██    ██    ████  ██  ██  ████
+██              ██████    ████████  ██      ██
+██████████████████████████████████████████████
+.....&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;I quickly wrote a python tool to split the data into separate files.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;c&quot;&gt;#!/usr/bin/env python&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;base64&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b64decode&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;README.txt&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;counter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;out&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;&#39;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;readlines&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;out&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;76&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;filename&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;output&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;%02&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;d.txt&#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;counter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;fh&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filename&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;wb&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;fh&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b64decode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;fh&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;counter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;out&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;&#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;I now read the files in chunks of 3 at the time (max fit on my screen), and
+scanning them one by one with my phone.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language--&quot; data-lang=&quot;-&quot;&gt;output01.txt    F
+output02.txt    l
+output03.txt    a
+output04.txt    g
+output05.txt    i
+output06.txt    s
+output07.txt    :
+output08.txt    I
+output09.txt    W
+output10.txt    {
+output11.txt    Q
+output12.txt    R
+output13.txt    _
+output14.txt    C
+output15.txt    0
+output16.txt    D
+output17.txt    E
+output18.txt    S
+output19.txt    _
+output20.txt    R
+output21.txt    U
+output22.txt    L
+output23.txt    3
+output24.txt    }&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Which obviously becomes &lt;code class=&quot;highlighter-rouge&quot;&gt;Flag is: IW{QR_C0DES_RUL3}&lt;/code&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Flag: IW{QR_C0DES_RUL3}&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+        <pubDate>Mon, 22 Feb 2016 00:00:00 -0500</pubDate>
+        <link>/writeups/ctf/internetwatche-2016-ctf-quick-run-misc-60/</link>
+        <guid isPermaLink="true">/writeups/ctf/internetwatche-2016-ctf-quick-run-misc-60/</guid>
+        
+        
+        <category>Writeups</category>
+        
+        <category>CTF</category>
+        
+      </item>
+    
+      <item>
+        <title>InternetWatche 2016 CTF - It&#39;s Primer Time! (Code 60)</title>
+        <description>&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;We all know that prime numbers are quite important in cryptography. Can you help me to find some?&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;!-- more --&gt;
+
+&lt;h2 id=&quot;solution&quot;&gt;Solution&lt;/h2&gt;
+
+&lt;p&gt;Connecting to the running service, I was greated with a message asking for the
+next prime number after [number]&lt;/p&gt;
+
+&lt;p&gt;So with some quick python hackery I ended up with this code.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;c&quot;&gt;#!/usr/bin/env python&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pwn&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;get_next_prime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Get next prime after number&quot;&quot;&quot;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+                &lt;span class=&quot;c&quot;&gt;#print &#39;&amp;gt; num %% y = %d %% %d =&#39;%(num,y),(num % y)&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;break&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;host&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;188.166.133.53&#39;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;port&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;11059&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;remote&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;host&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;port&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;recv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1024&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;orig_data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;recv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1024&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;orig_data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39; &#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;orig_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;number&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;strip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rstrip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;:&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;next_prime&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get_next_prime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;Next prime after &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;d is &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;s&#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;next_prime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;send&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;next_prime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;recv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1024&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;It ran for a little bit before crashing, which I expected, and returning the
+flag.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Flag: IW{Pr1m3s_4r3_!mp0rt4nt}&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+        <pubDate>Mon, 22 Feb 2016 00:00:00 -0500</pubDate>
+        <link>/writeups/ctf/internetwatche-2016-ctf-its-primer-time-code-60/</link>
+        <guid isPermaLink="true">/writeups/ctf/internetwatche-2016-ctf-its-primer-time-code-60/</guid>
+        
+        
+        <category>Writeups</category>
+        
+        <category>CTF</category>
+        
+      </item>
+    
+      <item>
+        <title>InternetWatche 2016 CTF - A Number Game (Code 50)</title>
+        <description>&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;People either love or hate math. Do you love it? Prove it! You just need to solve a bunch of equations without a mistake.&lt;/p&gt;
+
+  &lt;p&gt;Service: 188.166.133.53:11027&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;!-- more --&gt;
+
+&lt;h2 id=&quot;solution&quot;&gt;Solution&lt;/h2&gt;
+
+&lt;p&gt;Connecting to the service with &lt;code class=&quot;highlighter-rouge&quot;&gt;nc 188.166.133.53 11027&lt;/code&gt; gave me a simple equation.
+I answered a few manually, but quickly realized that I had to write a script for
+this.&lt;/p&gt;
+
+&lt;p&gt;From my manual testing I saw that the format was always of the format
+&lt;code class=&quot;highlighter-rouge&quot;&gt;x [+-*/] [number] = [number]&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;So I quickly hammered together a script, and crossed my fingers.&lt;/p&gt;
+
+&lt;p&gt;Yes, I know the code is ugly as hell. But it works.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;c&quot;&gt;#!/usr/bin/env python&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pwn&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;parse_equation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;indata&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;equation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;equals&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;indata&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39; = &#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;new_equation&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;equation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lstrip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;x &#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;oper&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_equation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;oper&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;-&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;new_equation&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;equals&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39; + &#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_equation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:]&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;oper&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;+&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;new_equation&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;equals&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39; - &#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;equation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:]&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;oper&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;*&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;new_equation&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;equals&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39; / &#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;equation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:]&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;oper&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;/&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;new_equation&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;equation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39; / &#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;equals&lt;/span&gt;
+
+
+    &lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;Parsed equation: &#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_equation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;eval&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new_equation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;host&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;188.166.133.53&#39;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;port&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;11027&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;remote&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;host&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;port&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;              &lt;span class=&quot;c&quot;&gt;# Connect to host&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;recv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1024&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;                        &lt;span class=&quot;c&quot;&gt;# Receive welcome line&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;recv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1024&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;junk&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;equation&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;:&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;     &lt;span class=&quot;c&quot;&gt;# Extract equation from receive data&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;answer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parse_equation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;equation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;strip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()))&lt;/span&gt;    &lt;span class=&quot;c&quot;&gt;# Parse equation&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;Answer: &#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;answer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;send&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;answer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;recv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1024&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;                           &lt;span class=&quot;c&quot;&gt;# Close connection&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Flag: IW{M4TH_1S_34SY}&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+        <pubDate>Mon, 22 Feb 2016 00:00:00 -0500</pubDate>
+        <link>/writeups/ctf/internetwatche-2016-ctf-a-numbers-game-code-50/</link>
+        <guid isPermaLink="true">/writeups/ctf/internetwatche-2016-ctf-a-numbers-game-code-50/</guid>
+        
+        
+        <category>Writeups</category>
+        
+        <category>CTF</category>
+        
+      </item>
+    
+      <item>
+        <title>Learning by Doing: Web Application Exploitation</title>
+        <description>&lt;p&gt;Web applications becomes more and more important for private persons and for
+businisses, so naturally they become more and more attractive as another
+attack surface.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;h2 id=&quot;table-of-contents&quot;&gt;Table of Contents&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;#cross-site-scripting&quot;&gt;Cross-Site Scripting&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#sql-injection&quot;&gt;SQL Injection&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#cross-site-request-forgery&quot;&gt;Cross-Site Request Forgery&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#file-inclusion&quot;&gt;File Inclusion&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;cross-site-scripting&quot;&gt;Cross-Site Scripting&lt;/h2&gt;
+&lt;p&gt;&lt;a name=&quot;cross-site-scripting&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Abbrevations: XSS&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Reflective&lt;/strong&gt; XSS is when the exploit code is not stored anywhere but the
+user has to trigger it through, for example, a specially crafted URL. If the code
+is removed from the URL, nothing will happen.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Stored&lt;/strong&gt; XSS is when the code is stored, for example, in a database or a
+text file. This code will the run every time a user visits a page that pulls
+the code from wherever it’s stored.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;sql-injection&quot;&gt;SQL Injection&lt;/h2&gt;
+&lt;p&gt;&lt;a name=&quot;sql-injection&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Abbrevations: SQLi&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;Techniques&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Union&lt;/strong&gt; based injection is the simplest form of injection. It relies on the
+ability to use “union select” queries constructed by the attacker to exfiltrate
+data from the database.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Error&lt;/strong&gt; based injections depends on verbose error messages being printed to
+the page. Specially crafted payloads can then take advantage of this to
+exfiltrate arbitrary data into the error message&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Blind boolean&lt;/strong&gt; based injection prints no information to the page. It is
+performed by asking the database server a series of true and false questions,
+and takes advantage of differences in the page presented to the user to
+determine if a request was successful or not.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Blind time&lt;/strong&gt; based injection is partially like “&lt;em&gt;blind boolean&lt;/em&gt;”, except that
+it’s not using differences in response content to determine success or failure.
+Instead the query is crafted in a way that tells the database server to “sleep”,
+or wait, for X amount of seconds before responding based on the result of the
+query.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;cross-site-request-forgery&quot;&gt;Cross-Site Request Forgery&lt;/h2&gt;
+&lt;p&gt;&lt;a name=&quot;cross-site-request-forgery&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Abbrevations: CSRF, XSRF&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;file-inclusion&quot;&gt;File Inclusion&lt;/h2&gt;
+&lt;p&gt;&lt;a name=&quot;file-inclusion&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Abbrevations:&lt;br /&gt;
+LFI - Local File Inclusion&lt;br /&gt;
+RFI - Remote File Inclusion&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+        <pubDate>Thu, 18 Feb 2016 00:00:00 -0500</pubDate>
+        <link>/learning%20by%20doing/web-application-exploitation/</link>
+        <guid isPermaLink="true">/learning%20by%20doing/web-application-exploitation/</guid>
+        
+        
+        <category>Learning By Doing</category>
+        
+      </item>
     
       <item>
         <title>Welcome To My Corner</title>
@@ -32,7 +571,7 @@ some.&lt;/p&gt;
         <guid isPermaLink="true">/random/welcome/</guid>
         
         
-        <category>random</category>
+        <category>Random</category>
         
       </item>
     
